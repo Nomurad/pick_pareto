@@ -19,6 +19,7 @@ module readcsv
             !print *, line 
 
             i = 1
+            dim_counter = 1
             do
                 j = index(line(i:), ",")
                 if (j == 0) exit
@@ -202,11 +203,11 @@ module pick_pareto
         do i = 1, datasize(1)
             n_thread = dble(omp_get_thread_num())
             if((mod(i,1000) == 0)) then 
-                ! print "(i7' /'2i7)", i, datasize(1) , int(n_thread)
+                print "(i7' /'2i7)", i, datasize(1) , int(n_thread)
                 ! print "(i7' /'2i7)", &
-                print "(f10.5' /'2i7)", &
-                & (i-(datasize(1)/dble(sum_thread))) / (datasize(1)/sum_thread), &
-                & datasize(1), omp_get_thread_num()
+                ! print "(f10.5' /'2i7)", &
+                ! & (i-(datasize(1)/dble(sum_thread))) / (datasize(1)/sum_thread), &
+                ! & datasize(1), omp_get_thread_num()
             end if
             do j = 1, datasize(1)
                 !if (i==j) then 
